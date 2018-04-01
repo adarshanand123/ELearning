@@ -1,0 +1,23 @@
+$ var classData = input.pageData.classDetails;
+<h1>${classData.title}</h1>
+<h3>${classData.instructor}</h3>
+<p>${classData.description}</p>
+<if(!out.global.req.user)>
+$ var href = `/register`;
+	<a class="btn btn-primary" href=href>Sign Up to Register</a>	
+</if>
+<else-if(!out.global.res.locals.class)>
+$ var action = `/classes/register`;
+	<form action=action method="post">
+		<input type="hidden" name="class_id" value=classData._id.toString()>
+		<input type="hidden" name="class_title" value=classData.title>
+		<input type="submit" class="btn btn-primary" value="Register for this class">
+	</form>	
+</else-if>
+<else>
+	<for(lessons in classData.lessons)>
+		<span>${lessons.lesson_number}</span>
+		<h3>${lessons.lesson_title}</h3>
+		<p>${lessons.lesson_body}</p>
+	</for>
+</else>

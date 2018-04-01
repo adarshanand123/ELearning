@@ -1,0 +1,25 @@
+$ var userClassesData = input.pageData.userClasses;
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ClasId</th>
+      <th scope="col">ClassTitle</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+	<for(userClassData in userClassesData)>
+	    <tr>
+	        <td>${userClassData.class_id}</td>
+	        <td>${userClassData.class_title}</td>
+	        $ var href = `/classes/${userClassData.class_id}`
+	        <td><a href=href>View lessons </a></td>
+	        <if(out.global.req.user.usertype!="Student")>
+	        $ var href = `/classes/${userClassData.class_id}/add`
+	        <td><a href=href>Add lesson </a></td>
+	        </if>
+	    </tr>
+	</for>
+  </tbody>
+</table>

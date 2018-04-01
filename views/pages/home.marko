@@ -1,0 +1,29 @@
+<div class="row">
+<div class="homeContainer col-9">
+	<h1>Welcome to eLearn</h1>
+	<p>ELearning is simple and free online learning platform,whrere instructors can create courses,and students can
+		register for  courses.</p>
+	<if(!out.global.req.user)>
+	<a class="btn btn-primary" href="/register">Sign Up for Free</a>
+	<p>You need to sign up to register for free classes.</p>
+	</if>
+</div>
+<div class="col-3">
+	<if(!out.global.req.user)>
+		<login-tag/>
+	</if>
+	<else>
+	$ var href = `/userMyClasses/`
+		<div><a href=href>My Classes</a></div>
+		<div><a href="/login/logout">log out</a></div>
+	</else>
+</div>
+</div>
+$ var pageData = input.pageData;
+<footer class="row">
+	<for(classData in pageData.classes)>
+		<div class="col-4">
+			<class-tag  classData = classData />
+		</div>
+	</for>
+</footer>

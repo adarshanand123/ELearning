@@ -1,0 +1,19 @@
+$ var pageData = input.pageData;
+<div class="row">
+	<div class="col-9">
+		<for(classData in pageData.classes)>
+			<class-tag  classData = classData />
+		</for>
+	</div>
+	<div class="col-3">
+		<if(!out.global.req.user)>
+			<login-tag/>
+		</if>
+		<else>
+		$ var href = `/userMyClasses/`
+			<div><a href=href>My Classes</a></div>
+			<div><a href="/login/logout">log out</a></div>
+		</else>
+	</div>
+</div>
+
